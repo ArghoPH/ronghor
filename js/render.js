@@ -10,7 +10,19 @@ import { updateStrip } from './components/strip.js';
 import { updateUndo } from './history.js';
 import { activePalette } from './state.js';
 
-export function render(){
-  const f=activePalette();
-  applySiteVars(f); updateStrip(); renderLogo(); renderHead(); renderContrast(f); renderWheel(); renderGuide(f); renderExport(); markPresets(); syncControls(); updateUndo(); updatePop();
+export function render() {
+  const f =
+    activePalette();
+    applySiteVars(f);
+    updateStrip();
+    renderLogo();
+    renderHead();
+    renderContrast(f);
+    renderWheel();
+    renderGuide(f);
+    renderExport();
+    markPresets();
+    syncControls();
+    updateUndo();
+    updatePop();
 }
