@@ -65,7 +65,7 @@ export function generate(base, harmony, style, exact) {
   const h2 = (h + off[0] + 360) % 360, h3 = (h + off[1] + 360) % 360;
   const ns = clamp(s * 0.35, 4, soft ? 20 : 28);
   const p = {};
-  
+
   if (!dark) {
     p.bg = hsl(h, ns, soft ? 97.5 : 98); p.surface = '#FFFFFF'; p.border = hsl(h, clamp(ns, 6, 22), 88);
     p.text = hsl(h, clamp(ns * 1.6, 8, 40), 11);
