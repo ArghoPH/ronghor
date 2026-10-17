@@ -1,0 +1,96 @@
+/* stage */
+.stage {
+    display: grid;
+    gap: 14px;
+    min-width: 0
+}
+
+.stagebar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    align-items: center;
+    justify-content: space-between
+}
+
+.sb-left {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px
+}
+
+.vision {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--ink-2)
+}
+
+.vision .ic {
+    color: var(--ink-2)
+}
+
+.stage-hint {
+    margin: -4px 0 0;
+    font-size: 13px;
+    color: var(--ink-3)
+}
+
+.frame-wrap {
+    position: relative
+}
+
+.frame {
+    container-type: inline-size;
+    container-name: site;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    box-shadow: var(--shadow);
+    margin-inline: auto;
+    width: 100%;
+    max-width: 100%;
+    transition: max-width .35s ease
+}
+
+.frame.is-mobile {
+    max-width: 390px
+}
+
+.frame-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    background: var(--panel-2);
+    border-bottom: 1px solid var(--line)
+}
+
+.fdots {
+    display: flex;
+    gap: 6px
+}
+
+.fdots i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--line)
+}
+
+.url {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    color: var(--ink-2);
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 3px 10px;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}

@@ -1,0 +1,135 @@
+/* contrast */
+.cpanel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 16px 18px;
+    box-shadow: var(--shadow)
+}
+
+.c-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px 16px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-bottom: 6px
+}
+
+.c-head h2 {
+    font-family: var(--f-display);
+    font-size: 20px;
+    margin: 0;
+    line-height: 1.25;
+    letter-spacing: -.01em
+}
+
+.c-head p {
+    margin: 2px 0 0;
+    font-size: 13px;
+    color: var(--ink-3);
+    max-width: 66ch
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 999px;
+    white-space: nowrap;
+    line-height: 1.6
+}
+
+.badge .ic {
+    width: 12px;
+    height: 12px
+}
+
+.badge.pass {
+    background: var(--pass-bg);
+    color: var(--pass)
+}
+
+.badge.warn {
+    background: var(--warn-bg);
+    color: var(--warn)
+}
+
+.badge.fail {
+    background: var(--fail-bg);
+    color: var(--fail)
+}
+
+.c-score {
+    font-size: 13.5px;
+    padding: 4px 12px
+}
+
+.clist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+    column-gap: 28px
+}
+
+.crow {
+    display: grid;
+    grid-template-columns: 62px minmax(0, 1fr) auto;
+    gap: 6px 12px;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px solid var(--line-2)
+}
+
+.c-sample {
+    height: 40px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-weight: 700;
+    font-family: var(--f-display);
+    font-size: 17px;
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / .08);
+    transition: background-color .35s, color .35s
+}
+
+.c-label {
+    min-width: 0
+}
+
+.c-label b {
+    display: block;
+    font-size: 14px;
+    line-height: 1.35
+}
+
+.c-label small {
+    display: block;
+    color: var(--ink-3);
+    font-size: 12.5px;
+    line-height: 1.35
+}
+
+.c-val {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: flex-end;
+    flex-wrap: wrap
+}
+
+.c-ratio {
+    font-family: var(--f-mono);
+    font-size: 13.5px;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    min-width: 58px;
+    text-align: right
+}
+
+.c-fix {
+    grid-column: 2 / -1;
+    justify-self: start
+}

@@ -1,0 +1,126 @@
+/* image */
+.drop {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 2px;
+    text-align: center;
+    padding: 24px 16px;
+    border: 1.5px dashed var(--line);
+    border-radius: 12px;
+    background: var(--panel-2);
+    cursor: pointer;
+    transition: border-color .15s, background-color .15s
+}
+
+.drop:hover,
+.drop.is-over {
+    border-color: var(--ink)
+}
+
+.drop .ic {
+    width: 26px;
+    height: 26px;
+    color: var(--ink-2);
+    margin-bottom: 6px
+}
+
+.drop b {
+    font-size: 15px
+}
+
+.drop span {
+    font-size: 12.5px;
+    color: var(--ink-3)
+}
+
+.drop input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%
+}
+
+.linkbtn {
+    border: 0;
+    background: none;
+    padding: 0;
+    color: var(--ink);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-size: 13.5px;
+    margin-top: 10px
+}
+
+.img-row {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+    margin: 16px 0 12px
+}
+
+.img-row img {
+    width: 84px;
+    height: 84px;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--panel-2)
+}
+
+.extract {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px
+}
+
+.ex {
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    overflow: hidden;
+    background: var(--panel);
+    padding: 0;
+    text-align: left;
+    min-width: 0
+}
+
+.ex:hover {
+    border-color: var(--ink)
+}
+
+.ex i {
+    display: block;
+    height: 32px
+}
+
+.ex span {
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 10.5px;
+    padding: 3px 5px;
+    line-height: 1.35;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.ex small {
+    display: block;
+    font-size: 10.5px;
+    color: var(--ink-3);
+    padding: 0 5px 4px
+}
+
+.select {
+    min-height: 36px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--panel);
+    padding: 0 10px;
+    font-size: 13.5px;
+    max-width: 100%
+}

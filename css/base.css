@@ -1,0 +1,64 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+    color: inherit
+}
+
+button {
+    cursor: pointer
+}
+
+:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px
+}
+
+[hidden] {
+    display: none !important
+}
+
+.sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap
+}
+
+.ic {
+    width: 16px;
+    height: 16px;
+    flex: none
+}
+
+.mono {
+    font-family: var(--f-mono);
+    font-variant-numeric: tabular-nums
+}
+
+.app {
+    max-width: 1560px;
+    margin: 0 auto;
+    padding-left: max(clamp(16px, 2.2vw, 32px), env(safe-area-inset-left, 0px));
+    padding-right: max(clamp(16px, 2.2vw, 32px), env(safe-area-inset-right, 0px));
+    padding-block: 20px 56px
+}

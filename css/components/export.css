@@ -1,0 +1,113 @@
+/* export */
+.seg {
+    display: inline-flex;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 3px;
+    gap: 2px;
+    flex-wrap: wrap
+}
+
+.seg button {
+    border: 0;
+    background: none;
+    padding: 5px 11px;
+    border-radius: 7px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink-2);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.4
+}
+
+.seg button:hover {
+    color: var(--ink);
+    background: var(--panel-2)
+}
+
+.seg button[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--panel)
+}
+
+.seg.full {
+    display: flex
+}
+
+.seg.full button {
+    flex: 1;
+    justify-content: center
+}
+
+.codebox {
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--panel-2);
+    margin: 12px 0 18px
+}
+
+.codebox pre {
+    margin: 0;
+    padding: 14px;
+    font-family: var(--f-mono);
+    font-size: 12px;
+    line-height: 1.6;
+    max-height: 360px;
+    overflow: auto;
+    white-space: pre;
+    tab-size: 2
+}
+
+.codebox .btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 1
+}
+
+.shade-row {
+    margin-bottom: 12px
+}
+
+.shade-row .flabel {
+    display: block;
+    margin-bottom: 5px
+}
+
+.shades {
+    display: grid;
+    grid-template-columns: repeat(11, minmax(0, 1fr));
+    border-radius: 9px;
+    overflow: hidden;
+    border: 1px solid var(--line)
+}
+
+.shade {
+    border: 0;
+    padding: 0;
+    height: 40px;
+    position: relative;
+    display: grid;
+    align-content: end;
+    justify-items: center;
+    font-family: var(--f-mono);
+    font-size: 9.5px;
+    font-weight: 600;
+    padding-bottom: 3px
+}
+
+.shade.near::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    margin-left: -3px;
+    border-radius: 50%;
+    background: currentColor
+}

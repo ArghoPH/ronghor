@@ -1,0 +1,68 @@
+/* Layout: a workbench. Paint-chip rail across the top, tool tabs on the left, the live sample website on the right with its contrast report underneath. The chrome stays near-neutral so a palette is judged on its own. */
+:root {
+  color-scheme: light;
+  --bg: #ECEEED;
+  --panel: #FFFFFF;
+  --panel-2: #F4F6F5;
+  --sunk: #E3E7E6;
+  --ink: #131717;
+  --ink-2: #4D5656;
+  --ink-3: #6E7877;
+  --line: #D3D9D8;
+  --line-2: #E4E8E7;
+  --focus: #1F6FEB;
+  --pass: #13703F;
+  --pass-bg: #DFF1E6;
+  --warn: #835300;
+  --warn-bg: #F8EDD3;
+  --fail: #B12C25;
+  --fail-bg: #FAE3E0;
+  --shadow: 0 1px 2px rgb(19 23 23 / .06), 0 12px 30px -16px rgb(19 23 23 / .25);
+  --f-display: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
+  --f-body: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E1111;
+    --panel: #161A1A;
+    --panel-2: #1C2121;
+    --sunk: #232929;
+    --ink: #E6EBEA;
+    --ink-2: #A6B0AF;
+    --ink-3: #808B8A;
+    --line: #2C3333;
+    --line-2: #222828;
+    --focus: #6EA8FE;
+    --pass: #5AD394;
+    --pass-bg: #13291D;
+    --warn: #EDB653;
+    --warn-bg: #2A2213;
+    --fail: #FF8F85;
+    --fail-bg: #321918;
+    --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 12px 30px -16px rgb(0 0 0 / .7);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0E1111;
+  --panel: #161A1A;
+  --panel-2: #1C2121;
+  --sunk: #232929;
+  --ink: #E6EBEA;
+  --ink-2: #A6B0AF;
+  --ink-3: #808B8A;
+  --line: #2C3333;
+  --line-2: #222828;
+  --focus: #6EA8FE;
+  --pass: #5AD394;
+  --pass-bg: #13291D;
+  --warn: #EDB653;
+  --warn-bg: #2A2213;
+  --fail: #FF8F85;
+  --fail-bg: #321918;
+  --shadow: 0 1px 2px rgb(0 0 0 / .4), 0 12px 30px -16px rgb(0 0 0 / .7);
+  color-scheme: dark;
+}

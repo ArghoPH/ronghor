@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Pick website colors and see exactly where each one goes. Presets, live site preview, WCAG contrast checks and CSS/Tailwind export.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='1' y='1' width='18' height='18' rx='5' fill='%231F4FD1'/%3E%3Crect x='21' y='1' width='18' height='18' rx='5' fill='%23F2A93B'/%3E%3Crect x='1' y='21' width='18' height='18' rx='5' fill='%230B2A5B'/%3E%3Crect x='21' y='21' width='18' height='18' rx='5' fill='%230E1A2B'/%3E%3C/svg%3E">
+<title>Ronghor Color Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components/header.css">
+<link rel="stylesheet" href="css/components/rail.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components/presets.css">
+<link rel="stylesheet" href="css/components/generator.css">
+<link rel="stylesheet" href="css/components/image.css">
+<link rel="stylesheet" href="css/components/guide.css">
+<link rel="stylesheet" href="css/components/export.css">
+<link rel="stylesheet" href="css/components/stage.css">
+<link rel="stylesheet" href="css/components/preview.css">
+<link rel="stylesheet" href="css/components/contrast.css">
+<link rel="stylesheet" href="css/components/toast.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="cb-protan" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0.567 0.433 0 0 0  0.558 0.442 0 0 0  0 0.242 0.758 0 0  0 0 0 1 0"/></filter>
+    <filter id="cb-deutan" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0.625 0.375 0 0 0  0.7 0.3 0 0 0  0 0.3 0.7 0 0  0 0 0 1 0"/></filter>
+    <filter id="cb-tritan" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0.95 0.05 0 0 0  0 0.433 0.567 0 0  0 0.475 0.525 0 0  0 0 0 1 0"/></filter>
+    <filter id="cb-achroma" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0.299 0.587 0.114 0 0  0.299 0.587 0.114 0 0  0.299 0.587 0.114 0 0  0 0 0 1 0"/></filter>
+  </defs>
+</svg>
+
+<div class="app">
+  <header class="top">
+    <div class="brand">
+      <div class="logo" id="logo" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div>
+        <h1>Ronghor</h1>
+        <p>Pick colors for your website and see exactly where each one goes</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <button class="btn" type="button" id="undoBtn" data-ic="undo" title="Undo (Ctrl+Z)"><span class="lbl">Undo</span></button>
+      <button class="btn" type="button" id="redoBtn" data-ic="redo" title="Redo (Ctrl+Shift+Z)"><span class="lbl">Redo</span></button>
+      <button class="btn" type="button" id="randomBtn" data-ic="shuffle" title="New random palette (Space)"><span class="lbl">Random <kbd>Space</kbd></span></button>
+      <button class="btn solid" type="button" id="saveBtn" data-ic="bookmark"><span class="lbl">Save</span></button>
+    </div>
+  </header>
+
+  <section class="rail" aria-labelledby="palName">
+    <div class="rail-head">
+      <div><span class="eyebrow">Current palette</span><h2 id="palName">Trust Blue</h2></div>
+      <p class="rail-why" id="palWhy"></p>
+    </div>
+    <p class="mode-note" id="modeNote" hidden></p>
+    <div class="strip" id="strip"></div>
+    <p class="rail-foot">Click a color to change it, or type a hex code. Hover a card to see where that color sits in the preview. Locked colors stay put when you shuffle, generate or switch presets.</p>
+  </section>
+
+  <div class="main">
+    <aside class="side" aria-label="Tools">
+      <div class="tabs" role="tablist" aria-label="Tools">
+        <button class="tab" role="tab" type="button" id="tab-presets" aria-controls="pane-presets" data-tab="presets">Presets</button>
+        <button class="tab" role="tab" type="button" id="tab-gen" aria-controls="pane-gen" data-tab="gen">Generate</button>
+        <button class="tab" role="tab" type="button" id="tab-image" aria-controls="pane-image" data-tab="image">Image</button>
+        <button class="tab" role="tab" type="button" id="tab-guide" aria-controls="pane-guide" data-tab="guide">Guide</button>
+        <button class="tab" role="tab" type="button" id="tab-export" aria-controls="pane-export" data-tab="export">Export</button>
+      </div>
+
+      <div class="pane" role="tabpanel" id="pane-presets" aria-labelledby="tab-presets">
+        <p class="lead">Palettes built for different kinds of websites, each with all 12 colors already in the right places. Lock your own brand color, then switch presets to see which backgrounds and text colors suit it.</p>
+        <div class="chips" id="cats" role="group" aria-label="Category"></div>
+        <div class="saved-wrap" id="savedWrap" hidden>
+          <h3 class="sec-title">Your saved palettes</h3>
+          <div class="plist" id="savedList"></div>
+        </div>
+        <div class="plist" id="presetList"></div>
+      </div>
+
+      <div class="pane" role="tabpanel" id="pane-gen" aria-labelledby="tab-gen" hidden>
+        <p class="lead">Pick one base color. Background, text, borders, secondary and accent colors are built from it using color-wheel rules.</p>
+        <div class="wheel-box">
+          <div class="wheel" id="wheel" role="slider" tabindex="0" aria-label="Base color hue" aria-valuemin="0" aria-valuemax="359" aria-valuenow="0">
+            <svg class="wheel-lines" viewBox="0 0 100 100" aria-hidden="true"><g id="wheelLines"></g></svg>
+            <span class="wdot" data-k="secondary">S</span>
+            <span class="wdot" data-k="accent">A</span>
+            <span class="wdot" data-k="primary">P</span>
+          </div>
+          <p class="hint">Click or drag on the wheel. P = primary, S = secondary, A = accent.</p>
+        </div>
+        <div class="field">
+          <label class="flabel" for="genHex">Base or brand color</label>
+          <div class="color-field"><span class="cf-swatch" id="genSw"><input type="color" id="genColor" aria-label="Pick base color"></span><input id="genHex" class="mono" spellcheck="false" autocomplete="off" maxlength="7"></div>
+        </div>
+        <div class="field">
+          <span class="flabel" id="harmLbl">Color harmony</span>
+          <div class="opts" id="harmOpts" role="group" aria-labelledby="harmLbl"></div>
+          <p class="hint" id="harmHint"></p>
+        </div>
+        <div class="field">
+          <span class="flabel" id="styleLbl">Mood</span>
+          <div class="seg full" id="styleSeg" role="group" aria-labelledby="styleLbl">
+            <button type="button" data-v="soft">Soft</button>
+            <button type="button" data-v="vivid">Vivid</button>
+            <button type="button" data-v="dark">Dark</button>
+          </div>
+        </div>
+        <label class="check"><input type="checkbox" id="genExact" checked> Keep the base color exactly as the primary (turn off to let it shift slightly darker or lighter so button text stays readable)</label>
+        <button class="btn solid wide" type="button" id="genBtn" data-ic="wand">Build palette with these rules</button>
+        <p class="hint" style="margin-top:10px">Locked colors won't change. Press Space for a completely random palette.</p>
+      </div>
+
+      <div class="pane" role="tabpanel" id="pane-image" aria-labelledby="tab-image" hidden>
+        <p class="lead">Upload a logo or product photo. Its main colors are pulled out and turned into a full website palette, so your logo and site match.</p>
+        <label class="drop" id="drop" for="imgFile">
+          <span data-ic="upload"></span>
+          <b>Choose an image</b>
+          <span>or drag it here · PNG, JPG, WEBP</span>
+          <input type="file" id="imgFile" accept="image/*">
+        </label>
+        <button class="linkbtn" type="button" id="sampleImg">Try it with a sample logo</button>
+        <div id="imgOut" hidden>
+          <div class="img-row"><img id="imgThumb" alt="Uploaded image"><div class="extract" id="extract"></div></div>
+          <button class="btn solid wide" type="button" id="imgAuto" data-ic="wand">Build a full palette from these colors</button>
+          <div class="field" style="margin-top:12px">
+            <label class="flabel" for="assignRole">Clicking a single color applies it to</label>
+            <select id="assignRole" class="select"></select>
+          </div>
+        </div>
+      </div>
+
+      <div class="pane" role="tabpanel" id="pane-guide" aria-labelledby="tab-guide" hidden>
+        <section class="g-sec">
+          <h3 class="sec-title">The 60-30-10 rule</h3>
+          <div class="ratio" id="ratioBar"></div>
+          <dl class="ratio-key">
+            <dt>60%</dt><dd>Neutrals: background and cards. Most of the page.</dd>
+            <dt>30%</dt><dd>Secondary color and body text. Structure and variety.</dd>
+            <dt>10%</dt><dd>Primary and accent. Buttons, links, badges, wherever you want eyes to go.</dd>
+          </dl>
+          <p class="hint" style="margin-top:8px">Think of a room: walls 60%, furniture 30%, cushions and vases 10%.</p>
+        </section>
+        <section class="g-sec">
+          <h3 class="sec-title">What your primary color says</h3>
+          <div class="psy" id="psy"></div>
+        </section>
+        <section class="g-sec">
+          <h3 class="sec-title">Which color goes where</h3>
+          <ul class="g-roles" id="gRoles"></ul>
+        </section>
+        <section class="g-sec">
+          <h3 class="sec-title">Rules for a good palette</h3>
+          <ul class="tips" id="tips"></ul>
+        </section>
+      </div>
+
+      <div class="pane" role="tabpanel" id="pane-export" aria-labelledby="tab-export" hidden>
+        <p class="lead">Copy the code into your website's CSS or Tailwind setup.</p>
+        <div class="seg full" id="fmtSeg" role="group" aria-label="Format">
+          <button type="button" data-v="css">CSS</button>
+          <button type="button" data-v="scss">SCSS</button>
+          <button type="button" data-v="tw4">TW v4</button>
+          <button type="button" data-v="tw3">TW v3</button>
+          <button type="button" data-v="json">JSON</button>
+        </div>
+        <div style="margin-top:12px">
+          <label class="check"><input type="checkbox" id="optDark" checked> Include dark mode colors</label>
+          <label class="check" style="margin-bottom:0"><input type="checkbox" id="optShades" checked> Include shade scale (50 to 950)</label>
+        </div>
+        <div class="codebox">
+          <button class="btn sm" type="button" id="copyCode" data-ic="copy">Copy</button>
+          <pre id="code" tabindex="0" aria-label="Export code"></pre>
+        </div>
+        <h3 class="sec-title">Shade scale</h3>
+        <p class="hint" style="margin-bottom:10px">Lighter and darker steps of the same hue for hovers, borders and light backgrounds. Click any step to copy it. The step with a dot is closest to your color.</p>
+        <div id="shadeRows"></div>
+      </div>
+    </aside>
+
+    <div class="stage">
+      <div class="stagebar">
+        <div class="sb-left">
+          <div class="seg" id="modeSeg" role="group" aria-label="Preview mode">
+            <button type="button" data-v="light" data-ic="sun">Light</button>
+            <button type="button" data-v="dark" data-ic="moon">Dark</button>
+          </div>
+          <div class="seg dev" id="devSeg" role="group" aria-label="Screen size">
+            <button type="button" data-v="desktop" data-ic="monitor">Desktop</button>
+            <button type="button" data-v="mobile" data-ic="phone">Mobile</button>
+          </div>
+        </div>
+        <label class="vision" for="vision"><span data-ic="eye"></span><span class="sr">Simulate vision</span>
+          <select id="vision" class="select">
+            <option value="none">Normal vision</option>
+            <option value="protan">Protanopia: hard to see red</option>
+            <option value="deutan">Deuteranopia: hard to see green</option>
+            <option value="tritan">Tritanopia: blue and yellow look alike</option>
+            <option value="achroma">Greyscale: no color at all</option>
+          </select>
+        </label>
+      </div>
+      <p class="stage-hint">Hover any part of the preview to see which colors it uses. Click to change them right there.</p>
+      <div class="frame-wrap" id="frameWrap">
+        <div class="frame" id="frame">
+          <div class="frame-bar"><span class="fdots" aria-hidden="true"><i></i><i></i><i></i></span><span class="url" id="url"></span></div>
+          <div class="site" id="site"></div>
+        </div>
+        <div class="tip" id="tip" hidden></div>
+        <div class="pop" id="pop" role="dialog" aria-label="Change colors used here" hidden>
+          <div class="pop-head"><b>Colors used here</b><button class="pop-x" type="button" id="popX" aria-label="Close" data-ic="x"></button></div>
+          <div id="popList"></div>
+          <p class="pop-note" id="popNote" hidden></p>
+        </div>
+      </div>
+
+      <section class="cpanel" aria-labelledby="cTitle">
+        <div class="c-head">
+          <div>
+            <h2 id="cTitle">Contrast check</h2>
+            <p>Can people read it? Measured with WCAG rules: at least 4.5:1 for normal text, 3:1 for icons and large text, and 7:1 for the top rating (AAA).</p>
+          </div>
+          <span class="badge c-score" id="cScore"></span>
+        </div>
+        <div class="clist" id="clist"></div>
+      </section>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
