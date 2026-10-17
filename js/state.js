@@ -48,5 +48,7 @@ export function persist() {
 export function loadStore() {
   try {
     return JSON.parse(localStorage.getItem(LS) || 'null');
-  } catch (e) { return null; }
+  } catch (e) { 
+    return null; 
+  }
 }
