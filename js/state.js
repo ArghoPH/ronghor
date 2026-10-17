@@ -30,7 +30,7 @@ export const activePalette = () => full(modePalette(state.mode));
 
 export function persist() {
   try {
-    localStorage.setItem(LS, JSON.stringify({
+    localStorage.setItem(LS, JSON.stringify( {
       cur: {
         p: state.p,
         name: state.name,
@@ -39,8 +39,10 @@ export function persist() {
         why: state.why,
         mode: state.mode
       },
-      locks: [...state.locks], saved: state.saved
-    }));
+      locks: [...state.locks], 
+      saved: state.saved
+    }
+  ));
   }
   catch (e) { }
 }
