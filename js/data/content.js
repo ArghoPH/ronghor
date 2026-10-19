@@ -155,6 +155,7 @@ export const CONTENT = {
       items: ['With borhani and salad', 'Enough for two', 'Cooked in pure ghee'],
       btn: 'Add plate'
     },
+    
     form: {
       title: 'Book a table',
       btn: 'Book now',
